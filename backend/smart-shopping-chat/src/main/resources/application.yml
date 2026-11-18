@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://127.0.0.1:3306/smart_shop?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: smart-shopping-chat
+  config:
+    import: optional:nacos:smart-shopping-chat.yml
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+      config:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        file-extension: yml
+    sentinel:
+      transport:
+        dashboard: ${SENTINEL_ADDR:127.0.0.1:8858}
+      eager: true
+server:
+  port: 8004
+
+smart-shopping:
+  chat:
+    rocketmq-enabled: ${CHAT_ROCKETMQ_ENABLED:false}
+    deepseek:
+      base-url: ${DEEPSEEK_BASE_URL:https://api.deepseek.com}
+      model: ${DEEPSEEK_MODEL:deepseek-chat}
+      api-key: ${DEEPSEEK_API_KEY:}
+    product-service-url: ${PRODUCT_SERVICE_URL:http://127.0.0.1:8002}
+    order-service-url: ${ORDER_SERVICE_URL:http://127.0.0.1:8003}
+    internal-token: ${INTERNAL_API_TOKEN:smart-shopping-internal}
+
+rocketmq:
+  name-server: ${ROCKETMQ_NAMESRV:127.0.0.1:9876}
+  producer:
+    group: ${ROCKETMQ_PRODUCER_GROUP:smart-shopping-chat-producer}
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

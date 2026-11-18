@@ -1,0 +1,46 @@
+spring:
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://127.0.0.1:3306/smart_shop?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:123456}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  application:
+    name: smart-shopping-product
+
+  config:
+    import: optional:nacos:smart-shopping-product.yml
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+      config:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        file-extension: yml
+
+    sentinel:
+      transport:
+        dashboard: ${SENTINEL_ADDR:127.0.0.1:8858}
+      eager: true
+
+  # 收藏、评论、管理员商品接口需要读取登录 Session
+  session:
+    store-type: redis
+    timeout: 30m
+    redis:
+      namespace: smart-shopping:session
+
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:123321}
+
+server:
+  port: 8002
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

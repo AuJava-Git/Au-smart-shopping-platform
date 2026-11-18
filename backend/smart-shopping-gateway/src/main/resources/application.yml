@@ -1,0 +1,87 @@
+spring:
+  application:
+    name: smart-shopping-gateway
+  config:
+    import: optional:nacos:smart-shopping-gateway.yml
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+      config:
+        server-addr: ${NACOS_ADDR:127.0.0.1:8848}
+        file-extension: yml
+    gateway:
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+      routes:
+        - id: user-service
+          uri: lb://smart-shopping-user
+          predicates: [Path=/api/users/**]
+          filters: [StripPrefix=1]
+        - id: address-service
+          uri: lb://smart-shopping-user
+          predicates: [Path=/api/addresses/**]
+          filters: [StripPrefix=1]
+        - id: message-service
+          uri: lb://smart-shopping-user
+          predicates: [Path=/api/messages/**]
+          filters: [StripPrefix=1]
+        - id: point-service
+          uri: lb://smart-shopping-user
+          predicates: [Path=/api/points/**]
+          filters: [StripPrefix=1]
+        - id: product-service
+          uri: lb://smart-shopping-product
+          predicates: [Path=/api/products/**]
+          filters: [StripPrefix=1]
+        - id: category-service
+          uri: lb://smart-shopping-product
+          predicates: [Path=/api/categories/**]
+          filters: [StripPrefix=1]
+        - id: favorite-service
+          uri: lb://smart-shopping-product
+          predicates: [Path=/api/favorites/**]
+          filters: [StripPrefix=1]
+        - id: review-service
+          uri: lb://smart-shopping-product
+          predicates: [Path=/api/reviews/**]
+          filters: [StripPrefix=1]
+        - id: admin-review-service
+          uri: lb://smart-shopping-product
+          predicates: [Path=/api/admin/reviews/**]
+          filters: [StripPrefix=1]
+        - id: order-service
+          uri: lb://smart-shopping-order
+          predicates: [Path=/api/orders/**]
+          filters: [StripPrefix=1]
+        - id: cart-service
+          uri: lb://smart-shopping-order
+          predicates: [Path=/api/cart/**]
+          filters: [StripPrefix=1]
+        - id: admin-order-service
+          uri: lb://smart-shopping-order
+          predicates: [Path=/api/admin/orders/**]
+          filters: [StripPrefix=1]
+        - id: chat-service
+          uri: lb://smart-shopping-chat
+          predicates: [Path=/api/chat/**]
+          filters: [StripPrefix=1]
+        - id: chat-websocket-service
+          uri: lb:ws://smart-shopping-chat
+          predicates: [Path=/ws/chat]
+
+server:
+  port: 9000
