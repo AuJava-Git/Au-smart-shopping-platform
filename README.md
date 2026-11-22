@@ -22,8 +22,7 @@
 <img width="1034" height="728" alt="屏幕截图 2026-11-22 183028" src="https://github.com/user-attachments/assets/38ee48b8-74c7-4f30-8f86-4e93430d26dd" />
 
 商品列表页面（截图导致泛白，正常使用无问题）
-<img width="1034" height="728" alt="屏幕截图 2026-11-22 183028" src="https://github.com/user-attachments/assets/799eb652-8a32-437c-bf53-f864c1fbc0e7" />
-
+<img width="1032" height="733" alt="屏幕截图 2026-11-22 183055" src="https://github.com/user-attachments/assets/04785c53-2078-4f6b-9978-079ce416ced4" />
 
 商品描述界面（截图导致泛白，正常使用无问题）
 <img width="1030" height="733" alt="屏幕截图 2026-11-22 183118" src="https://github.com/user-attachments/assets/6acb32dc-cdbb-4994-8152-b44fdd66c570" />
