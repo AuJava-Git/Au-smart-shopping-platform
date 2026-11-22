@@ -13,7 +13,7 @@
 ## 当前迁移策略
 第一版使用共享 MySQL 数据库，先保证业务迁移和服务边界可运行；服务之间通过 Nacos 注册发现，订单服务保留 OpenFeign 与 RocketMQ 示例，Redis 用于 Session/购物车/缓存，Sentinel 用于流量保护。后续再按领域拆库，避免在业务未稳定时引入分布式事务。
 
-我在下面放一些截图展示，具体内容可以自行下载使用
+## 我在下面放一些截图展示，具体内容可以自行下载使用
 
 平台展示
 <img width="1028" height="734" alt="屏幕截图 2026-11-22 183000" src="https://github.com/user-attachments/assets/88e970d8-13af-4b08-b9e7-88fa9c74c630" />
