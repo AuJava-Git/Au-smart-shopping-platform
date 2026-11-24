@@ -1,4 +1,4 @@
-# 智能购物平台企业级微服务版
+# Au慧心购物平台企业级微服务版
 
 本版本以之前的“六大模块完成版”为业务基线，保留用户、商品、订单、购物车、地址、分类、收藏、评论审核、站内消息、积分、客服和智能推荐等业务；技术栈统一为 Spring Boot 3.5、Spring Cloud Alibaba、Nacos、Gateway、OpenFeign、Sentinel、Redis、RocketMQ、MySQL、MyBatis-Plus、Vue、Docker。以此纪念我的第一个项目，对于毕业设计有需要的同学，这个是一个很好的选择，小众且完整有亮点。
 
